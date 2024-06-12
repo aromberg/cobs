@@ -16,3 +16,4 @@ cobs*.tar.gz
 cobs_index.egg-info
 *.so
 *.bin
+.vscode/
