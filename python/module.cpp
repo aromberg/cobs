@@ -427,7 +427,7 @@ Construct a COBS Compact Index from a pre-populated DocumentList object.
     .def(
         "search",
         [](Search& s,
-           const std::string& query, double threshold, size_t num_results, uint8_t step)
+           const std::string& query, double threshold, size_t num_results, uint16_t step)
         {
             // lambda to allocate and return vector
             std::vector<cobs::SearchResult> result;

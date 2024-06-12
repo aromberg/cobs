@@ -51,7 +51,7 @@ public:
     virtual void search(
         const std::string& query,
         std::vector<SearchResult>& result,
-        double threshold = 0.0, uint64_t num_results = 0, uint8_t step = 1) = 0;
+        double threshold = 0.0, uint64_t num_results = 0, uint16_t step = 1) = 0;
 
 public:
     //! timer of different query phases

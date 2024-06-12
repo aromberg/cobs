@@ -404,7 +404,7 @@ void search_index_file(
 void ClassicSearch::search(
     const std::string& query,
     std::vector<SearchResult>& result,
-    double threshold, uint64_t num_results, uint8_t step)
+    double threshold, uint64_t num_results, uint16_t step)
 {
     static constexpr bool debug = false;
 
