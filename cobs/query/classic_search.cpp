@@ -67,13 +67,14 @@ static inline
 void create_hashes(
     std::vector<uint64_t>& hashes, const std::string& query,
     char* canonicalize_buffer,
-    const std::shared_ptr<IndexSearchFile>& index_file)
+    const std::shared_ptr<IndexSearchFile>& index_file, uint8_t step = 1)
 {
+
     uint32_t term_size = index_file->term_size();
     uint64_t num_hashes = index_file->num_hashes();
     uint8_t canonicalize = index_file->canonicalize();
 
-    uint64_t num_terms = query.size() - term_size + 1;
+    uint64_t num_terms = (uint64_t)((query.size() - term_size + 1) / step + 0.5);
     hashes.resize(num_hashes * num_terms);
 
     const char* query_8 = query.data();
@@ -81,7 +82,7 @@ void create_hashes(
     if (canonicalize == 0) {
         for (uint64_t i = 0; i < num_terms; i++) {
             for (uint64_t j = 0; j < num_hashes; j++) {
-                hashes[i * num_hashes + j] = XXH64(query_8 + i, term_size, j);
+                hashes[i * num_hashes + j] = XXH64(query_8 + step * i, term_size, j);
             }
         }
     }
@@ -311,7 +312,7 @@ void search_index_file(
     uint64_t file_num, const std::shared_ptr<IndexSearchFile>& index_file,
     const std::string& query, Score* score_list,
     uint64_t& total_hashes, const std::vector<uint64_t>& sum_doc_counts,
-    Timer& timer)
+    Timer& timer, uint8_t step = 1)
 {
     static constexpr bool debug = false;
 
@@ -330,7 +331,7 @@ void search_index_file(
     std::vector<uint64_t> hashes;
 
     tlx::simple_vector<char> canonicalize_buffer(term_size);
-    create_hashes(hashes, query, canonicalize_buffer.data(), index_file);
+    create_hashes(hashes, query, canonicalize_buffer.data(), index_file, step);
 
     total_hashes += hashes.size();
     timer.stop();
@@ -403,7 +404,7 @@ void search_index_file(
 void ClassicSearch::search(
     const std::string& query,
     std::vector<SearchResult>& result,
-    double threshold, uint64_t num_results)
+    double threshold, uint64_t num_results, uint8_t step)
 {
     static constexpr bool debug = false;
 
@@ -460,7 +461,7 @@ void ClassicSearch::search(
             search_index_file(
                 file_num, index_files_[file_num],
                 query, score_list,
-                total_hashes, sum_doc_counts, timer_);
+                total_hashes, sum_doc_counts, timer_, step);
         }
 
         counts_to_result(index_files_, score_list, result, thresholds,
