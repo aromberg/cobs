@@ -423,6 +423,8 @@ Construct a COBS Compact Index from a pre-populated DocumentList object.
         m, "Search",
         "Search object to run queries on COBS indices")
     .def(py::init<std::string, bool>(),
+        py::arg("path"),
+        py::arg("load_complete_index") = false,
          "constructor, loads the given classic or compact index file.")
     .def(
         "search",
