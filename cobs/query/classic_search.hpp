@@ -20,7 +20,7 @@ class ClassicSearch : public Search
 {
 public:
     //! method to try to auto-detect and load IndexSearchFile
-    ClassicSearch(std::string path);
+    ClassicSearch(std::string path, bool load_complete_index = false);
 
     ClassicSearch(std::shared_ptr<IndexSearchFile> index);
 

@@ -48,8 +48,10 @@ ClassicSearch::ClassicSearch(std::shared_ptr<IndexSearchFile> index)
 ClassicSearch::ClassicSearch(std::vector<std::shared_ptr<IndexSearchFile> > indices)
     : index_files_(std::move(indices)) { }
 
-ClassicSearch::ClassicSearch(std::string path)
+ClassicSearch::ClassicSearch(std::string path, bool load_complete_index)
 {
+    cobs::gopt_load_complete_index = load_complete_index;
+
     if (file_has_header<ClassicIndexHeader>(path)) {
         index_files_.emplace_back(
             std::make_shared<ClassicIndexMMapSearchFile>(path));
