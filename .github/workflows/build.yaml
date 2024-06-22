@@ -30,7 +30,7 @@ jobs:
         make
         make test
 
-  mac_build_clang:
+  mac_build:
     name: Build and test Mac OS X with clang
     runs-on: macos-11
     steps:
@@ -52,6 +52,6 @@ jobs:
           export OpenMP_ROOT=$(brew --prefix)/opt/libomp        
           mkdir build
           cd build
-          cmake -DNOOPENMP=1 -DSKIP_PYTHON=1 ..
+          cmake -DSKIP_PYTHON=1 ..
           make
           make test
