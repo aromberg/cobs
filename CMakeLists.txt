@@ -10,6 +10,10 @@
 cmake_minimum_required(VERSION 3.9.2)
 cmake_policy(VERSION 3.9.2)
 
+# OpenMP support when using Clang on Mac
+cmake_policy(SET CMP0074 NEW)
+
+
 project(cobs)
 
 # prohibit in-source builds

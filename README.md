@@ -58,11 +58,6 @@ and optionally run `make test` to check the build. Note that to download submodu
 
 ## OS X compilation
 
-### Using `gcc`
-
-1. Install `gcc-11` or more recent: `brew install gcc@11`
-2. Compile COBS: `cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-11 -DCMAKE_CXX_COMPILER=g++-11 ..`
-
 ### Using `clang`:
 
 1. Install `boost-1.76`: `brew install boost@1.76`
