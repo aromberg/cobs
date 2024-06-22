@@ -49,7 +49,7 @@ jobs:
         run: |         
           # set up env variables
           export BOOST_ROOT="/usr/local/opt/boost@1.76"
-          export OpenMP_ROOT=$(brew --prefix)/opt/libomp        
+          export OpenMP_ROOT=$(brew --prefix libomp)       
           mkdir build
           cd build
           cmake -DSKIP_PYTHON=1 ..
