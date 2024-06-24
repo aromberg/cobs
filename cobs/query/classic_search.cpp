@@ -479,7 +479,7 @@ void ClassicSearch::search(
             search_index_file(
                 file_num, index_files_[file_num],
                 query, score_list,
-                total_hashes, sum_doc_counts, timer_);
+                total_hashes, sum_doc_counts, timer_, step);
         }
 
         counts_to_result(index_files_, score_list, result, thresholds,

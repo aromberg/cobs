@@ -36,9 +36,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          brew install cmake boost@1.76
-          brew install libomp
-
+          brew install cmake boost@1.76 libomp
 
       - name: Check out code for the build
         uses: actions/checkout@v2
