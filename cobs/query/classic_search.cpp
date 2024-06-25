@@ -91,7 +91,7 @@ void create_hashes(
     else if (canonicalize == 1) {
         for (uint64_t i = 0; i < num_terms; i++) {
             bool good =
-                canonicalize_kmer(query_8 + i, canonicalize_buffer, term_size);
+                canonicalize_kmer(query_8 + step * i, canonicalize_buffer, term_size);
 
             if (!good) {
                 die("Invalid DNA base pair in query string. "
