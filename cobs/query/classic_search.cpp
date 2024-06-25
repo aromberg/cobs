@@ -69,7 +69,7 @@ static inline
 void create_hashes(
     std::vector<uint64_t>& hashes, const std::string& query,
     char* canonicalize_buffer,
-    const std::shared_ptr<IndexSearchFile>& index_file, uint8_t step = 1)
+    const std::shared_ptr<IndexSearchFile>& index_file, uint16_t step = 1)
 {
 
     uint32_t term_size = index_file->term_size();
@@ -77,6 +77,7 @@ void create_hashes(
     uint8_t canonicalize = index_file->canonicalize();
 
     uint64_t num_terms = (uint64_t)((query.size() - term_size + 1) / step + 0.5);
+    printf("num_terms: %lu\n", num_terms);
     hashes.resize(num_hashes * num_terms);
 
     const char* query_8 = query.data();
@@ -314,7 +315,7 @@ void search_index_file(
     uint64_t file_num, const std::shared_ptr<IndexSearchFile>& index_file,
     const std::string& query, Score* score_list,
     uint64_t& total_hashes, const std::vector<uint64_t>& sum_doc_counts,
-    Timer& timer, uint8_t step = 1)
+    Timer& timer, uint16_t step = 1)
 {
     static constexpr bool debug = false;
 
