@@ -12,7 +12,6 @@
 
 #include <cobs/util/query.hpp>
 
-#include <immintrin.h>
 
 namespace cobs {
 

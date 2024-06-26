@@ -40,7 +40,6 @@ namespace cobs {
 uint64_t get_page_size() {
     int64_t page_size = getpagesize();
     die_unless(page_size > 0);
-    die_unless(page_size == 4096);     // todo check for experiments
     return (uint64_t)page_size;
 }
 

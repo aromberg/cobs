@@ -77,7 +77,6 @@ void create_hashes(
     uint8_t canonicalize = index_file->canonicalize();
 
     uint64_t num_terms = (uint64_t)((query.size() - term_size + 1) / step + 0.5);
-    printf("num_terms: %lu\n", num_terms);
     hashes.resize(num_hashes * num_terms);
 
     const char* query_8 = query.data();
