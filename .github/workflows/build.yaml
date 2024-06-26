@@ -18,7 +18,7 @@ jobs:
         sudo apt-get install cmake
 
     - name: Check out code for the build
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         submodules: recursive
 
@@ -31,7 +31,7 @@ jobs:
         make test
 
   mac_build:
-    name: Build and test Mac OS X with clang
+    name: Build and test Mac OS 13 with clang
     runs-on: macos-13
     steps:
       - name: Install dependencies
@@ -39,7 +39,31 @@ jobs:
           brew install cmake boost@1.76 libomp
 
       - name: Check out code for the build
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build and test
+        run: |         
+          # set up env variables
+          export BOOST_ROOT="/usr/local/opt/boost@1.76"
+          export OpenMP_ROOT=$(brew --prefix libomp)       
+          mkdir build
+          cd build
+          cmake -DSKIP_PYTHON=1 ..
+          make
+          make test
+
+  mac_arm64_build:
+    name: Build and test Mac OS 14 (ARM64) with clang
+    runs-on: macos-14
+    steps:
+      - name: Install dependencies
+        run: |
+          brew install cmake boost@1.76 libomp
+
+      - name: Check out code for the build
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
