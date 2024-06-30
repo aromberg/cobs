@@ -11,7 +11,7 @@ on:
 jobs:
   linux_build:
     name: Build and test linux
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: Install dependencies
       run: |
@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          brew install cmake boost@1.76 libomp
+          brew install cmake libomp
 
       - name: Check out code for the build
         uses: actions/checkout@v4
@@ -46,7 +46,6 @@ jobs:
       - name: Build and test
         run: |         
           # set up env variables
-          export BOOST_ROOT="/usr/local/opt/boost@1.76"
           export OpenMP_ROOT=$(brew --prefix libomp)       
           mkdir build
           cd build
@@ -60,7 +59,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          brew install cmake boost libomp
+          brew install cmake libomp
 
       - name: Check out code for the build
         uses: actions/checkout@v4
@@ -70,7 +69,6 @@ jobs:
       - name: Build and test
         run: |         
           # set up env variables
-          export BOOST_ROOT=$(brew --prefix libomp)
           export OpenMP_ROOT=$(brew --prefix libomp)       
           mkdir build
           cd build
