@@ -10,9 +10,8 @@
 cmake_minimum_required(VERSION 3.9.2)
 cmake_policy(VERSION 3.9.2)
 
-# Policies for OpenMP and Boost
+# Policy for OpenMP
 cmake_policy(SET CMP0074 NEW)
-cmake_policy(SET CMP0144 NEW)
 
 
 project(cobs)
@@ -187,16 +186,6 @@ set(COBS_LINK_LIBRARIES xxhash ${COBS_LINK_LIBRARIES})
 find_package(ZLIB REQUIRED)
 set(COBS_INCLUDE_DIRS ${ZLIB_INCLUDE_DIRS} ${COBS_INCLUDE_DIRS})
 set(COBS_LINK_LIBRARIES ${ZLIB_LIBRARIES} ${COBS_LINK_LIBRARIES})
-
-### check if we should use BOOST ###
-find_package(Boost 1.72.0 COMPONENTS system filesystem)
-if(BOOST_FOUND)
-  set(COBS_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${COBS_INCLUDE_DIRS})
-  set(COBS_LINK_LIBRARIES ${Boost_LIBRARIES} ${COBS_LINK_LIBRARIES})
-  add_compile_definitions(COBS_USE_BOOST)
-else()
-  set(COBS_LINK_LIBRARIES stdc++fs ${COBS_LINK_LIBRARIES})
-endif()
 
 ### use TLX ###
 add_subdirectory(extlib/tlx)

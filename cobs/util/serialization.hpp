@@ -13,6 +13,7 @@
 
 #include <fstream>
 #include <type_traits>
+#include <vector>
 
 #include <tlx/die.hpp>
 
