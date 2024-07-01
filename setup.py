@@ -98,4 +98,5 @@ if __name__ == '__main__':
             "Topic :: Scientific/Engineering :: Bio-Informatics",
             "Topic :: Text Processing :: Indexing"
         ],
-    )
+        python_requires='>=3.9',
+)

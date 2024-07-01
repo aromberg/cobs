@@ -18,15 +18,14 @@ jobs:
 
       - name: Setup Python for cibuildwheel
         uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
 
       - name: Install cibuildwheel
         run: python -m pip install cibuildwheel==2.19.1
 
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
-        env:
-          CIBW_SKIP: cp36-* cp37-* cp38-macosx_*
-          CIBW_ENVIRONMENT_MACOS: MACOSX_DEPLOYMENT_TARGET=10.15
 
       - uses: actions/upload-artifact@v4
         with:

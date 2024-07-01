@@ -3,4 +3,3 @@ requires = ["setuptools",
       "cmake",
 ]
 build-backend = "setuptools.build_meta"
-requires-python = ">=3.8"
