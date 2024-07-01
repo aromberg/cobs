@@ -25,7 +25,7 @@ jobs:
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
-          CIBW_SKIP: cp36-* cp37-*
+          CIBW_SKIP: cp36-* cp37-* cp38-macosx_*
           CIBW_ENVIRONMENT_MACOS: MACOSX_DEPLOYMENT_TARGET=10.15
 
       - uses: actions/upload-artifact@v4
