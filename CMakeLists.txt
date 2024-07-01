@@ -63,6 +63,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wpedantic -Wall")
 # use C++17
 set(CMAKE_CXX_STANDARD 17)
 
+# require OSX 10.15 or later
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+
 # additional default flags
 set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
