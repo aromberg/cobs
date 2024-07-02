@@ -76,14 +76,13 @@ with open("README.md", "r") as fh:
 
 if __name__ == '__main__':
     setup(
-        name='cobs_index',
-        version='0.1.2',
+        name='cobs_reloaded',
+        version='0.1.0',
         description='Compact Bit-Sliced Signature Index (COBS)',
         long_description=long_description,
         long_description_content_type="text/markdown",
-        url="https://panthema.net/cobs",
-        author='Timo Bingmann',
-        author_email='tbdev@panthema.net',
+        author='Adrian Romberg',
+        author_email='adrian.romberg@stud.uni-frankfurt.de',
         ext_modules=[CMakeExtension('cobs_index')],
         cmdclass=dict(build_ext=CMakeBuild),
         zip_safe=False,
