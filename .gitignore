@@ -14,6 +14,7 @@ cobs*.tar.gz
 !tests/data/non_acgt_test/index.cobs_classic
 .devcontainer/
 cobs_index.egg-info
+cobs_reloaded.egg-info
 *.so
 *.bin
 .vscode/
