@@ -15,7 +15,13 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-        sudo apt-get install cmake
+        sudo apt-get update
+        sudo apt-get install -y cmake
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.13
 
     - name: Check out code for the build
       uses: actions/checkout@v4
